@@ -30,7 +30,8 @@ void setup() {
 }
 
 void loop() {
-  int irSensorState = digitalRead(IRSENSORPIN);
+  //reading the sensor state 
+  int irSensorState = digitalRead(IRSENSORPIN); 
 
   // Sending the IR sensor state to ThingSpeak
   sendDataToThingSpeak(irSensorState);
@@ -60,9 +61,9 @@ void sendDataToThingSpeak(int irSensorState) {
   // Control Statement block to check if the data is sent or not
   if (httpCode == 200) {
     Serial.println("Data sent to ThingSpeak");
-    digitalWrite(LED_BUILTIN, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH); //turning the led on
     delay(1000);
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(LED_BUILTIN, LOW); //turning off the led
   } else {
     Serial.println("Error sending data to ThingSpeak");
   }
